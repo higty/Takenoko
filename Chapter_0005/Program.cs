@@ -12,6 +12,7 @@ namespace Chapter_0005
             numberList[1] = 3;
             numberList[2] = 5;
 
+            //コップの数だけ繰り返し処理
             for (int i = 0; i < numberList.Length; i++)
             {
                 Console.WriteLine("たけのこの数は" + numberList[i]);

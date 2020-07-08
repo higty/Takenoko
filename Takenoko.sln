@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter_0003", "Chapter_000
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter_0004", "Chapter_0004\Chapter_0004.csproj", "{DED360FD-56D3-42D8-8992-C1ABA24F8539}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter_0005", "Chapter_0005\Chapter_0005.csproj", "{F16152EC-C8EF-4312-8DD2-9EF299E85F42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter_0005", "Chapter_0005\Chapter_0005.csproj", "{F16152EC-C8EF-4312-8DD2-9EF299E85F42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter_0006", "Chapter_0006\Chapter_0006.csproj", "{F4C31B84-5470-44E8-AE29-7BEF9F66CEBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter_0007", "Chapter_0007\Chapter_0007.csproj", "{B56B3EA1-D841-4F8E-AEB8-4578C64BBC1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{F16152EC-C8EF-4312-8DD2-9EF299E85F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F16152EC-C8EF-4312-8DD2-9EF299E85F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F16152EC-C8EF-4312-8DD2-9EF299E85F42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4C31B84-5470-44E8-AE29-7BEF9F66CEBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4C31B84-5470-44E8-AE29-7BEF9F66CEBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4C31B84-5470-44E8-AE29-7BEF9F66CEBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4C31B84-5470-44E8-AE29-7BEF9F66CEBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B56B3EA1-D841-4F8E-AEB8-4578C64BBC1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B56B3EA1-D841-4F8E-AEB8-4578C64BBC1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B56B3EA1-D841-4F8E-AEB8-4578C64BBC1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B56B3EA1-D841-4F8E-AEB8-4578C64BBC1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
