@@ -64,16 +64,16 @@ namespace Chapter_0013
             EncodingProvider provider = System.Text.CodePagesEncodingProvider.Instance;
             var encoding = provider.GetEncoding(932);
 
-            var body = System.IO.File.ReadAllText("C:\\Data\\MemberList.csv", encoding);
+            var body = File.ReadAllText("C:\\Data\\MemberList.csv", encoding);
 
-            var sr = new StringReader(body);
+            var reader = new StringReader(body);
             var nameList = new String[14];
             var gakubuList = new String[14];
             var isFirstRow = true;
             var index = 0;
-            while (sr.Peek() > -1)
+            while (reader.Peek() > -1)
             {
-                var line = sr.ReadLine();
+                var line = reader.ReadLine();
                 if (isFirstRow == true)
                 {
                     isFirstRow = false;
