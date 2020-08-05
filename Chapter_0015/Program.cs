@@ -7,55 +7,69 @@ namespace Chapter_0015
     {
         static void Main(string[] args)
         {
-            var phoneNumber = "０９０－４５６１－２３７８";
+            var name = "田中";
+            var age = 30;
+            var positionName = "課長";
+            var birthDay = new DateTime(1990, 2, 2);
+            var organizationName = "IT部";
+            var workPlace = "東京";
 
-            var sw = Stopwatch.StartNew();
-            var s1 = ToHalfWidth(phoneNumber);
-            sw.Stop();
-            var ts = sw.Elapsed;
-            Console.WriteLine(ts.TotalMilliseconds.ToString() + "ミリ秒です");
+            var text = CreatePersonInfoText(name, age, positionName, birthDay, organizationName, workPlace);
+            Console.WriteLine(text);
 
-            Console.WriteLine(s1);
 
-            Console.WriteLine("Enterキーで終了");
+            var p = new Person();
+            p.Name = "鈴木";
+            p.Age = 32;
+            p.PositionName = "次長";
+            p.Birthday = new DateTime(1989, 6, 9);
+            p.OrganizationName = "企画部";
+            p.Workplace = "東京";
+            var text1 = CreatePersonInfoText(p);
+            Console.WriteLine(text1);
+
+            var p1 = new Person();
+            p1.Name = "福田";
+            p1.Age = 38;
+            p1.Birthday = new DateTime(1982, 3, 30);
+            p1.OrganizationName = "なし";
+            p1.Workplace = "新橋";
+            var text2 = CreatePersonInfoText(p1);
+            Console.WriteLine(text2);
+
+
+            Console.WriteLine("EnterKeyで終了");
             Console.ReadLine();
         }
-
-        static String ToHalfWidth(String value)
+        static String CreatePersonInfoText(String name, Int32 age, String positionName, DateTime birthday, String organizationName, String workPlace)
         {
-            var s = value.Replace("０", "0");
-            s = s.Replace("１", "1");
-            s = s.Replace("２", "2");
-            s = s.Replace("３", "3");
-            s = s.Replace("４", "4");
-            s = s.Replace("５", "5");
-            s = s.Replace("６", "6");
-            s = s.Replace("７", "7");
-            s = s.Replace("８", "8");
-            s = s.Replace("９", "9");
-            s = s.Replace("－", "-");
-
-            return s;
+            var text = "名前: " + name + Environment.NewLine;
+            text += "年齢: " + age + Environment.NewLine;
+            text += "役職: " + positionName + Environment.NewLine;
+            text += "誕生日: " + birthday.ToString("yyyy/MM/dd") + Environment.NewLine;
+            text += "組織: " + organizationName + Environment.NewLine;
+            text += "勤務地: " + workPlace + Environment.NewLine;
+            return text;
         }
-
-        static String ToHalfWidth_HighPerformance(String value)
+        static String CreatePersonInfoText_Star(String name, Int32 age, String positionName, DateTime birthday, String organizationName, String workPlace)
         {
-            var cc = new Char[value.Length];
-            //０:65296  0:48
-            for (int i = 0; i < value.Length; i++)
-            {
-                var c = value[i];
-                if (c == '－')
-                {
-                    cc[i] = '-';
-                }
-                else
-                {
-                    var newChar = (Char)((Int32)c - 65248);
-                    cc[i] = newChar;
-                }
-            }
-            return new String(cc);
+            var text = "☆名前: " + name + Environment.NewLine;
+            text += "☆年齢: " + age + Environment.NewLine;
+            text += "☆役職: " + positionName + Environment.NewLine;
+            text += "☆誕生日: " + birthday.ToString("yyyy/MM/dd") + Environment.NewLine;
+            text += "☆組織: " + organizationName + Environment.NewLine;
+            text += "☆勤務地: " + workPlace + Environment.NewLine;
+            return text;
+        }
+        static String CreatePersonInfoText(Person person)
+        {
+            var text = "名前: " + person.Name + Environment.NewLine;
+            text += "年齢: " + person.Age + Environment.NewLine;
+            text += "役職: " + person.PositionName + Environment.NewLine;
+            text += "誕生日: " + person.Birthday.ToString("yyyy/MM/dd") + Environment.NewLine;
+            text += "組織: " + person.OrganizationName + Environment.NewLine;
+            text += "勤務地: " + person.Workplace + Environment.NewLine;
+            return text;
         }
     }
 }
