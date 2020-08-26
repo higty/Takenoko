@@ -23,5 +23,10 @@ namespace TakenokoProgramingWebSite.Controllers
         {
             return View();
         }
+        [HttpGet("/Link/List")]
+        public IActionResult LinkList()
+        {
+            return View();
+        }
     }
 }
