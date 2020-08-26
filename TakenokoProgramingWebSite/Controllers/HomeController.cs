@@ -18,5 +18,10 @@ namespace TakenokoProgramingWebSite.Controllers
         {
             return View();
         }
+        [HttpGet("/Style/Sample")]
+        public IActionResult StyleSample()
+        {
+            return View();
+        }
     }
 }
