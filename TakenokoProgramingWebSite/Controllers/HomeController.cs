@@ -13,5 +13,10 @@ namespace TakenokoProgramingWebSite.Controllers
         {
             return View();
         }
+        [HttpGet("/Image/List")]
+        public IActionResult ImageList()
+        {
+            return View();
+        }
     }
 }
