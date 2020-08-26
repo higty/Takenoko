@@ -1,14 +1,52 @@
 ﻿<html>
     <head>
+        <style type="text/css">
+            .title {
+                color: #ff0cf3;
+                font-size: 72px;
+                font-family: 'Century Gothic';
+                font-weight: bold;
+            }
+            .link-panel {
+                width: 200px;
+                height: 200px;
+                background-color: #e0f0ff;
+                display: inline-block;
+                vertical-align: top;
+                margin-right: 10px;
+                padding: 10px;
 
+            }
+            .link-panel .title {
+                color: #33cc33;
+                text-decoration: none;
+                font-size: 18px;
+                font-weight: bold;
+            }
+        </style>
     </head>
     <body>
-        <div style="color:#ff0cf3;font-size:72px;font-family:'Century Gothic';font-weight:bold;">Takenoko Programing!!!</div>
+        <div class="title">Takenoko Programing!!!</div>
 
-        <div>
-            <a href="/Image/List">画像の一覧</a><br />
-            <a href="/Style/Sample">スタイルのサンプルページです</a><br />
+        <div class="link-panel">
+            <a href="/Image/List" class="title">画像の一覧</a>
+            <div style="font-size:14px;">
+                画像の一覧のページです。
+            </div>
         </div>
+        <div class="link-panel">
+            <a href="/Style/Sample" class="title">スタイルのサンプルページです</a>
+            <div style="font-size:14px;">
+                スタイルのサンプルのページです。
+            </div>
+        </div>
+        <div class="link-panel">
+            <a href="http://www.tohoho-web.com/css/index.htm" class="title">とほほのWWW入門(CSSリファレンス)</a>
+            <div style="font-size:14px;">
+                CSSのいろいろなリファレンスです。
+            </div>
+        </div>
+
     </body>
 </html>
 
