@@ -58,5 +58,42 @@ where Date >='2020-09-02'
 order by Price desc
 
 
+alter table DPayment add ID Int
+GO
+select * from DPayment
 
+UPDATE DPayment set ID = '1' where ItemName ='ドレス'
+UPDATE DPayment set ID = '2' where ItemName ='豆腐'
+UPDATE DPayment set ID = '3' where ItemName ='パスタ'
+UPDATE DPayment set ID = '4' where ItemName ='カメラ'
+UPDATE DPayment set ID = '5' where ItemName ='水族館入場料'
+UPDATE DPayment set ID = '6' where ItemName ='キーホルダー'
+UPDATE DPayment set ID = '7' where ItemName ='キュウリ'
+UPDATE DPayment set ID = '8' where ItemName ='ニンジン'
 
+alter table DPayment alter COLUMN ID Int Not NULL
+GO
+
+alter table DPayment add CONSTRAINT DPayment_PrimaryKey primary key CLUSTERED (ID)
+GO
+
+insert into DPayment values ('みかん','2020-09-04',50,'食費',9)
+
+update DPayment set Price = 90 where ID = 8
+
+insert into DPayment values ('キュウリ','2020-08-31',100,'食費',10)
+update DPayment set Price =120 where ID=10
+
+update DPayment set Price =200 where ID=6
+
+Create Table DAppLock
+(AppCD UniqueIdentifier Not Null 
+,LockType Nvarchar(100) Not Null 
+
+,Constraint DAppLock_PrimaryKey Primary Key Clustered(AppCD,LockType)
+,Constraint DAppLock_Fk_AppCD Foreign Key(AppCD) References MApp(AppCD)On Update No Action On Delete Cascade
+)
+Go
+
+Alter Table DAppLock Add Constraint DAppLock_Check_LockType Check(LockType in('UserAdd'))
+Go
