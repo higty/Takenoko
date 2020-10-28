@@ -283,7 +283,22 @@ select * from MFood
 select CategoryName,FoodName from MFoodCategory
 inner join MFood on MFoodCategory.CategoryID = MFood.CategoryID
 order by MFoodCategory.CategoryID
-
 --where MFoodCategory.CategoryID = '7'
+
+insert into MFoodCategory values('8','丼')
+
+select * from MFoodCategory
+
+
+select CategoryName,FoodName from MFoodCategory
+inner join MFood on MFoodCategory.CategoryID = MFood.CategoryID
+order by MFoodCategory.CategoryID
+
+select * from MFoodCategory
+select * from MFood
+
+select * from MFoodCategory
+left outer join MFood on MFoodCategory.CategoryID = MFood.CategoryID
+
 
 
