@@ -300,5 +300,80 @@ select * from MFood
 select * from MFoodCategory
 left outer join MFood on MFoodCategory.CategoryID = MFood.CategoryID
 
+--2020/11/04
+
+Create Table MUniversity
+(UniversityID Nvarchar(32) Not NULl
+,Name Nvarchar(64) Not NULl
+
+,CONSTRAINT MUniversity_PrimaryKey PRIMARY Key CLUSTERED(UniversityID)
+)
+Go
+
+Create Table MFaculty
+(FacultyID Nvarchar(32) Not NULl
+,FacultyName Nvarchar(64) Not NULl
+,UniversityID Nvarchar(32) Not NULl
+
+,CONSTRAINT MFaculty_PrimaryKey PRIMARY Key CLUSTERED(FacultyID)
+,CONSTRAINT MFaculty_FK_UniversityID FOREIGN KEY(UniversityID)REFERENCES MUniversity(UniversityID)
+)
+Go
+
+Create Table MStudent
+(StudentID Nvarchar(32) Not Null
+,StudentName Nvarchar(64) Not NULL
+,FacultyID Nvarchar(32) Not NULl
+
+,CONSTRAINT MStudent_PrimaryKey PRIMARY KEY CLUSTERED(StudentID)
+,CONSTRAINT MStudent_FK_FacultyID FOREIGN KEY(FacultyID) REFERENCES MFaculty(FacultyID)
+)
+GO
+
+insert into MUniversity VALUES('001', '東京大学')
+insert into MUniversity VALUES('002', '慶応大学')
+insert into MUniversity VALUES('003', '早稲田大学')
+insert into MUniversity VALUES('004', '青山学院大学')
+insert into MUniversity VALUES('005', '学習院大学')
+
+select * FROM MUniversity
+
+insert into MFaculty VALUES('001_01','文学部', '001')
+insert into MFaculty VALUES('001_02','工学部', '001')
+insert into MFaculty VALUES('001_03','法学部', '001')
+insert into MFaculty VALUES('002_01','医学部', '002')
+insert into MFaculty VALUES('002_02','理学部', '002')
+insert into MFaculty VALUES('002_03','法学部', '002')
+insert into MFaculty VALUES('003_01','政治経済部', '003')
+insert into MFaculty VALUES('003_02','工学部', '003')
+insert into MFaculty VALUES('003_03','理学部', '003')
+insert into MFaculty VALUES('004_01','文学部', '004')
+insert into MFaculty VALUES('004_02','経済学部', '004')
+insert into MFaculty VALUES('004_03','法学部', '004')
+insert into MFaculty VALUES('005_01','文学部', '005')
+insert into MFaculty VALUES('005_02','法学部', '005')
+
+select * FROM MFaculty
+
+SELECT T1.UniversityID, T1.Name, T2.FacultyID, T2.FacultyName FROM MUniversity AS T1
+INNER JOIN MFaculty AS T2 on T1.UniversityID = T2.UniversityID
+
+INSERT INTO MStudent VALUES('00001', '田中武', '001_01')
+INSERT INTO MStudent VALUES('00002', '鈴木将司', '002_01')
+INSERT INTO MStudent VALUES('00003', '佐藤健太', '003_01')
+
+
+SELECT T1.UniversityID, T1.Name, T2.FacultyID, T2.FacultyName,T3.StudentID, T3.StudentName 
+FROM MUniversity AS T1
+INNER JOIN MFaculty AS T2 on T1.UniversityID = T2.UniversityID
+LEFT OUTER JOIN MStudent AS T3 on T2.FacultyID = T3.FacultyID
+
+select StudentID,StudentName,T3.Name,FacultyName from MStudent as T1 
+INNER JOIN MFaculty as T2 on T1.FacultyID = T2.FacultyID
+INNER JOIN MUniversity as T3 on T2.UniversityID = T3.UniversityID
+
+
+
+
 
 
