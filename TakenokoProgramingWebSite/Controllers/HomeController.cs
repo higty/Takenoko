@@ -28,5 +28,10 @@ namespace TakenokoProgramingWebSite.Controllers
         {
             return View();
         }
+        [HttpGet("/CheatSheet")]
+        public IActionResult CheatSheet()
+        {
+            return View();
+        }
     }
 }

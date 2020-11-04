@@ -1,0 +1,224 @@
+﻿<html>
+    <head>
+        <link type="text/css" href="/Css/Common.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div>
+            <div class="section-title">テーブルの作成</div>
+            <div class="source-code">
+Create Table MUser
+(UserID Nvarchar(32) Not Null
+,DisplayName Nvarchar(64) Not Null
+,BodyHeight Int Not Null
+
+,Constraint MUser_PrimaryKey Primery Key Clustered (UserID)
+)
+Go
+            </div>
+
+            <div class="section-title">レコードを挿入</div>
+            <div class="source-code">
+insert into MUser values('123462','田中隆',170)
+            </div>
+
+            <div class="section-title">レコードを表示する</div>
+            <div class="source-code">
+select * from MUser
+            </div>
+
+            <div class="section-title">表示したいレコードを選択する</div>
+            <div class="source-code">
+select * from MUser
+where DisplayName='松田隆' 
+            </div>
+
+            <div class="section-title">列を追加する</div>
+            <div class="source-code">
+Alter Table MUser Add Birthday DATE
+
+            </div>
+
+             <div class="section-title">列の削除</div>
+            <div class="source-code">
+Alter Table MUser Drop Column Birthday
+            </div>
+
+             <div class="section-title">表を全て削除する</div>
+            <div class="source-code">
+Drop Table MUser
+            </div>
+
+                <div class="section-title">表示したいレコードの範囲を選択するOR</div>
+            <div class="source-code">
+select* from MUser
+where BodyHeight < 150 or 180 < BodyHeight
+            </div>
+
+                <div class="section-title">表示したいレコードの範囲を選択するAND</div>
+            <div class="source-code">
+select * from MUser
+where BodyHeight > 150 and BodyHeight< 180
+            </div>
+
+                <div class="section-title">表示したいレコードの範囲を選択するBETWEEN</div>
+            <div class="source-code">
+select * from MUser
+where BodyHeight between 150 and 180
+            </div>
+
+                <div class="section-title">複数の範囲を指定して表示する</div>
+            <div class="source-code">
+select * from MUser
+where (BodyHeight > 150 and BodyHeight < 180) 
+and Birthday >= '1991.01.12'' 
+            </div>
+
+                <div class="section-title">表示されているレコードを昇順にする</div>
+            <div class="source-code">
+select * from MUser
+order by BodyHeight asc
+            </div>
+
+                  <div class="section-title">表示されているレコードを降順にする</div>
+            <div class="source-code">
+select * from MUser
+order by BodyHeight desc
+            </div>
+
+             <div class="section-title">列名を変える</div>
+            <div class="source-code">
+select DisplayName as 名前
+from MUser
+            </div>
+
+             <div class="section-title">DATEから月のみ表示する</div>
+            <div class="source-code">
+select Birthday,
+DATEPART(MM,Birthday) as 月
+from MUser
+            </div>
+
+             <div class="section-title">〇歳以下の人を表示する</div>
+            <div class="source-code">
+select Birthday,
+DATEADD(Day,YEAR,-20,CONVERT(DATE, GETDATE()))< Birthday
+from MUser
+            </div>
+
+             <div class="section-title">グループごとのレコード数</div>
+            <div class="source-code">
+select GroupName,COUNT(*) as RecordCount from MUser
+group by MUser
+order by MUser desc
+            </div>
+            <div class="description">
+                *グループ名でグループ分けをし、それぞれのグループの集計結果を表示する
+            </div>
+
+             <div class="section-title">グループ分けをし、それぞれのグループの最大値を求める</div>
+            <div class="source-code">
+select GroupName, MAX(BodyHeight) as MaxHeight from MUser
+group by GroupName
+            </div>
+
+            <div class="section-title">グループ分けをし、それぞれのグループの最小値を求める</div>
+            <div class="source-code">
+select GroupName, MIN(BodyHeight) as MinHeight from MUser
+group by GroupName
+            </div>
+
+             <div class="section-title">表示するレコードを表示する</div>
+            <div class="source-code">
+select * from MUser
+order by BodyHeight ASC
+offset 4 ROW fetch NEXT 2 rows only
+            </div>
+             <div class="description">
+                *２～５行のみ表示する場合
+            </div>
+
+            <div class="section-title">トップ４を表示する</div>
+            <div class="source-code">
+select top 4 * from MUser
+order by BodyHeight ASC
+            </div>
+
+            <div class="section-title">JOIN用のテーブルを作成</div>
+            <div class="source-code">
+Create Table MFoodCategory
+(CategoryID Nvarchar(32) Not Null
+,CategoryName Nvarchar(64) Not Null
+
+,Constraint MFoodCategory_PrimaryKey PRIMARY KEY CLUSTERED(CategoryID)
+)
+GO
+
+Create Table MFood 
+(FoodCD UNIQUEIDENTIFIER Not Null
+,FoodName Nvarchar(128) Not Null
+,CategoryID Nvarchar(32) Not Null
+
+,Constraint MFood_PrimaryKey PRIMARY KEY CLUSTERED(FoodCD)
+,Constraint MFood_FK_CategoryID FOREIGN KEY(CategoryID) REFERENCES MFoodCategory(CategoryID)
+)
+Go
+            </div>
+
+            <div class="section-title">INNER JOIN する（２つのテーブルを結合する）</div>
+            <div class="source-code">
+select FoodName,MFood.CategoryID,CategoryName from MFood
+inner join MFoodCategory on MFood.CategoryID = MFoodCategory.CategoryID
+            </div>
+
+            <div class="section-title">3つのテーブルを結合する</div>
+            <div class="source-code">
+SELECT T1.UniversityID, T1.Name, T2.FacultyID, T2.FacultyName,T3.StudentID, T3.StudentName 
+FROM MUniversity AS T1
+INNER JOIN MFaculty AS T2 on T1.UniversityID = T2.UniversityID
+LEFT OUTER JOIN MStudent AS T3 on T2.FacultyID = T3.FacultyID
+            </div>
+
+            <div class="section-title">NとNのテーブルの結合</div>
+            <div class="source-code">
+
+Create Table MHobby
+(HobbyID Int Not Null
+,HobbyName Nvarchar(64) Not NULL
+
+,CONSTRAINT MHobby_PrimaryKey PRIMARY KEY CLUSTERED(HobbyID)
+)
+Go
+
+CREATE Table DUserHobby
+(UserID NVARCHAR(32) Not Null
+,HobbyID Int Not Null
+
+,CONSTRAINT DUserHobby_PrimaryKey PRIMARY KEY CLUSTERED(UserID, HobbyID)
+,CONSTRAINT DUserHobby_FK_UserID FOREIGN KEY (UserID) REFERENCES MUser(UserID)
+,CONSTRAINT DUserHobby_FK_HobbyID FOREIGN KEY(HobbyID) REFERENCES MHobby(HobbyID)
+)
+GO
+
+select T1.UserID, DisplayName, HobbyName from MUser as T1 
+inner join DUserHobby as T2 on T1.UserID = T2.UserID
+inner join MHobby as T3 on T2.HobbyID = T3.HobbyID
+            </div>
+              <div class="description">
+                *データテーブルを作成する必要がある
+            </div>
+
+            
+            <div class="section-title">結合したテーブルの必要なレコードのみ表示</div>
+            <div class="source-code">
+select T1.UserID, DisplayName, HobbyName from MUser as T1 
+inner join DUserHobby as T2 on T1.UserID = T2.UserID
+inner join MHobby as T3 on T2.HobbyID = T3.HobbyID
+
+select HobbyName,DisplayName from MHobby as T1 
+inner join DUserHobby as T2 on T1.HobbyID = T2.HobbyID
+inner join MUser as T3 on T2.UserID = T3.UserID
+            </div>
+
+        </div>
+    </body>
+</html>

@@ -373,6 +373,56 @@ INNER JOIN MFaculty as T2 on T1.FacultyID = T2.FacultyID
 INNER JOIN MUniversity as T3 on T2.UniversityID = T3.UniversityID
 
 
+select * from MUser
+
+Create Table MHobby
+(HobbyID Int Not Null
+,HobbyName Nvarchar(64) Not NULL
+
+,CONSTRAINT MHobby_PrimaryKey PRIMARY KEY CLUSTERED(HobbyID)
+)
+Go
+
+insert into MHobby VALUES(0, 'サッカー')
+insert into MHobby VALUES(1, '野球')
+insert into MHobby VALUES(2, 'バスケットボール')
+insert into MHobby VALUES(3, 'バレーボール')
+insert into MHobby VALUES(4, 'フットサル')
+insert into MHobby VALUES(5, '音楽鑑賞')
+insert into MHobby VALUES(6, '映画')
+insert into MHobby VALUES(7, 'ゲーム')
+insert into MHobby VALUES(8, '旅行')
+insert into MHobby VALUES(9, '寝ること')
+
+select * from MUser
+select * from MHobby
+
+CREATE Table DUserHobby
+(UserID NVARCHAR(32) Not Null
+,HobbyID Int Not Null
+
+,CONSTRAINT DUserHobby_PrimaryKey PRIMARY KEY CLUSTERED(UserID, HobbyID)
+,CONSTRAINT DUserHobby_FK_UserID FOREIGN KEY (UserID) REFERENCES MUser(UserID)
+,CONSTRAINT DUserHobby_FK_HobbyID FOREIGN KEY(HobbyID) REFERENCES MHobby(HobbyID)
+)
+GO
+
+insert into DUserHobby VALUES('123456', 0)
+insert into DUserHobby VALUES('123456', 4)
+insert into DUserHobby VALUES('123462', 4)
+insert into DUserHobby VALUES('123470', 5)
+insert into DUserHobby VALUES('123474', 6)
+insert into DUserHobby VALUES('123474', 7)
+insert into DUserHobby VALUES('123481', 9)
+
+select T1.UserID, DisplayName, HobbyName from MUser as T1 
+inner join DUserHobby as T2 on T1.UserID = T2.UserID
+inner join MHobby as T3 on T2.HobbyID = T3.HobbyID
+
+select HobbyName,DisplayName from MHobby as T1 
+inner join DUserHobby as T2 on T1.HobbyID = T2.HobbyID
+inner join MUser as T3 on T2.UserID = T3.UserID
+
 
 
 
