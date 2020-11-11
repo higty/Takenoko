@@ -39,7 +39,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter_0017", "Chapter_001
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter_0018", "Chapter_0018\Chapter_0018.csproj", "{E85B4AE6-47F9-487A-A0EF-E478D3B41702}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakenokoProgramingWebSite", "TakenokoProgramingWebSite\TakenokoProgramingWebSite.csproj", "{1411463C-1036-4C90-91A4-B2A20C4069CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakenokoProgramingWebSite", "TakenokoProgramingWebSite\TakenokoProgramingWebSite.csproj", "{1411463C-1036-4C90-91A4-B2A20C4069CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter_0019", "Chapter_0019\Chapter_0019.csproj", "{05DA2E16-2947-42E2-A07B-A1C80B8161AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +125,10 @@ Global
 		{1411463C-1036-4C90-91A4-B2A20C4069CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1411463C-1036-4C90-91A4-B2A20C4069CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1411463C-1036-4C90-91A4-B2A20C4069CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05DA2E16-2947-42E2-A07B-A1C80B8161AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05DA2E16-2947-42E2-A07B-A1C80B8161AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05DA2E16-2947-42E2-A07B-A1C80B8161AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05DA2E16-2947-42E2-A07B-A1C80B8161AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

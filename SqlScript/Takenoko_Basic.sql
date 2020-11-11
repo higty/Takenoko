@@ -223,7 +223,7 @@ declare @Offset Int = 2
 
 select * from MUser
 order by BodyHeight ASC
-offset @Offset ROW fetch NEXT 25 rows only
+offset 4 ROW fetch NEXT 2 rows only
 
 select * from MUser
 order by BodyHeight ASC
@@ -422,6 +422,44 @@ inner join MHobby as T3 on T2.HobbyID = T3.HobbyID
 select HobbyName,DisplayName from MHobby as T1 
 inner join DUserHobby as T2 on T1.HobbyID = T2.HobbyID
 inner join MUser as T3 on T2.UserID = T3.UserID
+
+
+
+CREATE Table MBlogUser
+(UserCD UNIQUEIDENTIFIER Not NULL
+,DisplayName NVARCHAR(64) Not Null
+,CreateTime DateTimeOffset(7) Not NULL
+
+,CONSTRAINT MBlogUser_PrimaryKey PRIMARY KEY CLUSTERED(UserCD)
+)
+Go
+
+CREATE TABLE DBlog
+(BlogCD UNIQUEIDENTIFIER Not NULL
+,Title Nvarchar(128) Not NULL
+,CreateTime DateTimeOffset(7) Not NULL
+,UserCD UNIQUEIDENTIFIER Not Null
+,BodyText NVARCHAR(max) Not NULL
+
+,CONSTRAINT DBlog_PrimaryKey PRIMARY KEY CLUSTERED(BlogCD)
+,CONSTRAINT DBlog_FK_UserCD FOREIGN KEY (UserCD) REFERENCES MBlogUser(UserCD)
+)
+Go
+
+
+INSERT INTO MBlogUser VALUES(NEWID(), '田中美幸', GETDATE())
+
+select * from MBlogUser
+
+select * from DBlog
+
+INSERT DBlog VALUES(NEWID(),'立山旅行', '2020-11-1 13:00', 'cccf0db6-05d7-4b8c-9ec9-81fab0a0bcae', '')
+INSERT DBlog VALUES(NEWID(),'栗駒山登山', '2020-11-8 13:00', 'cccf0db6-05d7-4b8c-9ec9-81fab0a0bcae', '')
+INSERT DBlog VALUES(NEWID(),'手作り弁当レシピ', '2020-10-16 13:00', '1e64cd53-ee22-4d5b-9e8e-d2bada785d7e', '')
+INSERT DBlog VALUES(NEWID(),'手芸日記その32', '2020-10-23 13:00', '56df4178-b42b-4e80-bc20-e78a486a5fdb', '')
+
+
+
 
 
 
