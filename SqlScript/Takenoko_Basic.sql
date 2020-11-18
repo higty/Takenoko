@@ -458,10 +458,38 @@ INSERT DBlog VALUES(NEWID(),'栗駒山登山', '2020-11-8 13:00', 'cccf0db6-05d7
 INSERT DBlog VALUES(NEWID(),'手作り弁当レシピ', '2020-10-16 13:00', '1e64cd53-ee22-4d5b-9e8e-d2bada785d7e', '')
 INSERT DBlog VALUES(NEWID(),'手芸日記その32', '2020-10-23 13:00', '56df4178-b42b-4e80-bc20-e78a486a5fdb', '')
 
+select * from DBlog where '2020/11/01 00:00' <= CreateTime and CreateTime < '2020/11/02 00:00'
+
+select * from DBlog where Title = '立山旅行'
 
 
 
+Create Table DPetOwner
+(OwnerCD UNIQUEIDENTIFIER Not Null
+,OwnerName Nvarchar(64) Not NULL
+,Birthday DATE Not Null
+
+,CONSTRAINT DPetOwner_PrimaryKey PRIMARY KEY CLUSTERED(OwnerCD)
+)
+GO
+
+Create Table DPet
+(PetCD UNIQUEIDENTIFIER Not NULL
+,PetName Nvarchar(64) Not NULL
+,PetCategory Nvarchar (64) Not Null
+,OwnerCD UNIQUEIDENTIFIER Not NULL
+,CONSTRAINT DPet_PrimaryKey PRIMARY KEY CLUSTERED(PetCD)
+,CONSTRAINT DPet_FK_OwnerCD FOREIGN KEY (OwnerCD) REFERENCES DPetOwner (OwnerCD)
+)
+Go
+
+select * from DPet
+
+insert DPetOwner values (NEWID(),'大塚健司','1990,08,19')
+insert DPetOwner values (NEWID(),'吉永樹','1982,12,03')
 
 
+select * from DPetOwner
 
+select * from DPetOwnerTable
 
