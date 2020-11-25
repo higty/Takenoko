@@ -429,10 +429,12 @@ CREATE Table MBlogUser
 (UserCD UNIQUEIDENTIFIER Not NULL
 ,DisplayName NVARCHAR(64) Not Null
 ,CreateTime DateTimeOffset(7) Not NULL
+,Password NVARCHAR(56) Not Null
 
 ,CONSTRAINT MBlogUser_PrimaryKey PRIMARY KEY CLUSTERED(UserCD)
 )
 Go
+
 
 CREATE TABLE DBlog
 (BlogCD UNIQUEIDENTIFIER Not NULL
