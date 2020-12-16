@@ -32,7 +32,7 @@ namespace TakenokoMusicPlayer
 
             this.Player.LoadedBehavior = MediaState.Manual;
 
-            this.FileListBox.MouseDoubleClick += FileListBox_MouseDoubleClick;
+            this.FileListBox.SelectionChanged += FileListBox_SelectionChanged;
             this.ReloadButton.Click += ReloadButton_Click;
             this.PreviousButton.Click += PreviousButton_Click;
             this.PlayButton.Click += PlayButton_Click;
@@ -64,7 +64,7 @@ namespace TakenokoMusicPlayer
             }
         }
 
-        private void FileListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void FileListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var mediaFile = this.FileListBox.SelectedItem as MediaFile;
             this.Play(mediaFile);
@@ -127,21 +127,6 @@ namespace TakenokoMusicPlayer
             _CurrentMediaFile = mediaFile;
             this.PlayButtonIcon.Source = new BitmapImage(new Uri("./Icon/PauseIcon.png", UriKind.Relative));
         }
-
-        private void Player_MediaEnded(object sender, RoutedEventArgs e)
-        {
-            this.Player.Stop();
-
-            if (this.IsContinueCheckBox.IsChecked == true)
-            {
-                var mediaFile = this.GetNextMediaFile();
-                this.Play(mediaFile);
-            }
-            else
-            {
-                _CurrentMediaFile = null;
-            }
-        }
         private MediaFile GetPreviousMediaFile()
         {
             var index = _FileList.IndexOf(_CurrentMediaFile);
@@ -161,6 +146,27 @@ namespace TakenokoMusicPlayer
             }
             var mediaFile = _FileList[index + 1];
             return mediaFile;
+        }
+
+        private void Player_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            this.Player.Stop();
+
+            if (this.RepeatAllRadioButton.IsChecked == true)
+            {
+                var mediaFile = this.GetNextMediaFile();
+                this.Play(mediaFile);
+            }
+            else if (this.Repeat1RadioButton.IsChecked == true)
+            {
+                var mediaFile = _CurrentMediaFile;
+                this.Play(mediaFile);
+            }
+            else
+            {
+                _CurrentMediaFile = null;
+                this.PlayButtonIcon.Source = new BitmapImage(new Uri("./Icon/PlayIcon.png", UriKind.Relative));
+            }
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
