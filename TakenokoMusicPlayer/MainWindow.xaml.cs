@@ -77,7 +77,7 @@ namespace TakenokoMusicPlayer
         private void LoadFileList()
         {
             _FileList.Clear();
-            foreach (var filePath in Directory.EnumerateFiles(this.FolderPathTextbox.Text, "*.mp3"
+            foreach (var filePath in Directory.EnumerateFiles(this.FolderPathTextbox.Text, "*.mp*"
                 , SearchOption.AllDirectories))
             {
                 _FileList.Add(new MediaFile(filePath));
