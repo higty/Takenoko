@@ -49,7 +49,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp_Blog", "WebApp_Blog\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter_0021", "Chapter_0021\Chapter_0021.csproj", "{E100AECF-D6DC-482A-BDE7-F2827B7654FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakenokoMusicPlayer", "TakenokoMusicPlayer\TakenokoMusicPlayer.csproj", "{F05D1CE3-0D93-4593-A35A-D4111D90C261}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakenokoMusicPlayer", "TakenokoMusicPlayer\TakenokoMusicPlayer.csproj", "{F05D1CE3-0D93-4593-A35A-D4111D90C261}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter_0022", "Chapter_0022\Chapter_0022.csproj", "{C6351100-B60F-47F5-8D11-5B1F4B5FAD2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -153,6 +155,10 @@ Global
 		{F05D1CE3-0D93-4593-A35A-D4111D90C261}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F05D1CE3-0D93-4593-A35A-D4111D90C261}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F05D1CE3-0D93-4593-A35A-D4111D90C261}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6351100-B60F-47F5-8D11-5B1F4B5FAD2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6351100-B60F-47F5-8D11-5B1F4B5FAD2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6351100-B60F-47F5-8D11-5B1F4B5FAD2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6351100-B60F-47F5-8D11-5B1F4B5FAD2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
