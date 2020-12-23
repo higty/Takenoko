@@ -9,8 +9,8 @@
     <Grid>
         <TextBox x:Name="TextBox1" Margin="10,10,20,0" 
                  FontSize="40" TextAlignment="Right"
-                 Text="10" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Slider x:Name="Slider1" Value="{Binding ElementName=TextBox1, Path=Text}"
+                 Text="{Binding ElementName=Slider1, Path=Value, StringFormat={}{0:#0.0}}" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Slider x:Name="Slider1" 
             Margin="15,76,20,0" VerticalAlignment="Top"
                 Interval="1" Maximum="500" Minimum="0" />
         <Button Content="ボリュームの値は？" 

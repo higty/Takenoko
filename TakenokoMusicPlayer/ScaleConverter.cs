@@ -12,7 +12,7 @@ namespace TakenokoMusicPlayer
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var x = (Double)value;
-            return (Int32)(x * 100);
+            return x * 100;
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {

@@ -56,7 +56,7 @@
                 Minimum="0" Maximum="100" Interval="1"
                 Value="{Binding ElementName=Player, Path=Volume, Converter={local:ScaleConverter}}"
                 Width="220" Height="18" VerticalAlignment="Bottom"/>
-        <Label Content="{Binding ElementName=VolumeSlider, Path=Value}" FontSize="18"
-               Margin="245,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="35"></Label>
+        <TextBlock Text="{Binding ElementName=VolumeSlider, Path=Value, StringFormat={}{0:00}}" FontSize="18"
+               Margin="245,0,0,10" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100"></TextBlock>
     </Grid>
 </Window>
