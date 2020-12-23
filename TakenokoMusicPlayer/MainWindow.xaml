@@ -51,6 +51,10 @@
             <RadioButton x:Name="Repeat1RadioButton" FontSize="14" Content="１曲リピート"></RadioButton>
             <RadioButton x:Name="RepeatAllRadioButton" FontSize="14" Content="全てリピート"></RadioButton>
         </StackPanel>
+        <Slider HorizontalAlignment="Left" Margin="20,0,0,17" 
+                Minimum="0" Maximum="100" Interval="1"
+                Value="{Binding ElementName=Player, Path=Volume}"
+                Width="220" Height="18" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>
