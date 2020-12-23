@@ -8,6 +8,9 @@
         Title="MainWindow" 
         Width="1000" Height="600" 
         MinWidth="800" MinHeight="520">
+    <Window.Resources>
+        <local:ScaleConverter x:Key="ScaleConverter"></local:ScaleConverter>
+    </Window.Resources>
     <Grid>
         <TextBox Name="FolderPathTextbox" Margin="10,10,90,0" 
                  Text="C:\" 
@@ -51,10 +54,12 @@
             <RadioButton x:Name="Repeat1RadioButton" FontSize="14" Content="１曲リピート"></RadioButton>
             <RadioButton x:Name="RepeatAllRadioButton" FontSize="14" Content="全てリピート"></RadioButton>
         </StackPanel>
-        <Slider HorizontalAlignment="Left" Margin="20,0,0,17" 
+        <Slider x:Name="VolumeSlider"
+            HorizontalAlignment="Left" Margin="20,0,0,17" 
                 Minimum="0" Maximum="100" Interval="1"
-                Value="{Binding ElementName=Player, Path=Volume}"
+                Value="{Binding ElementName=Player, Path=Volume, Converter={StaticResource ScaleConverter}}"
                 Width="220" Height="18" VerticalAlignment="Bottom"/>
-
+        <Label Content="{Binding ElementName=VolumeSlider, Path=Value, StringFormat={}{0:00}}" 
+               Margin="245,0,0,15" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="35"></Label>
     </Grid>
 </Window>
