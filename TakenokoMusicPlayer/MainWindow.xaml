@@ -46,17 +46,22 @@
             </Button>
         </StackPanel>
         <StackPanel Orientation="Vertical"
-                    Margin="0,0,10,10" Height="55" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="115">
+                    Margin="0,0,10,5" Height="55" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="115">
             <RadioButton x:Name="NoRepeatRadioButton" FontSize="14" Content="リピート無し" IsChecked="True"></RadioButton>
             <RadioButton x:Name="Repeat1RadioButton" FontSize="14" Content="１曲リピート"></RadioButton>
             <RadioButton x:Name="RepeatAllRadioButton" FontSize="14" Content="全てリピート"></RadioButton>
         </StackPanel>
+        <Slider x:Name="CurrentPositionSlider" Margin="10,0,10,60" 
+                Minimum="0" Maximum="1000" Interval="1" IsMoveToPointEnabled="True"
+                Height="18" VerticalAlignment="Bottom"/>
         <Slider x:Name="VolumeSlider"
             HorizontalAlignment="Left" Margin="20,0,0,17" 
                 Minimum="0" Maximum="100" Interval="1"
                 Value="{Binding ElementName=Player, Path=Volume, Converter={local:ScaleConverter}}"
                 Width="220" Height="18" VerticalAlignment="Bottom"/>
         <TextBlock Text="{Binding ElementName=VolumeSlider, Path=Value, StringFormat={}{0:00}}" FontSize="18"
-               Margin="245,0,0,10" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100"></TextBlock>
+               Margin="245,0,0,10" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="45"></TextBlock>
+        <TextBlock x:Name="CurrentTimeLabel" FontSize="18" Text="00:00"
+               Margin="330,0,0,10" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="45"></TextBlock>
     </Grid>
 </Window>

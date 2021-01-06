@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
+using System.Windows.Threading;
 
 namespace TakenokoMusicPlayer
 {
@@ -25,6 +26,7 @@ namespace TakenokoMusicPlayer
     {
         private ObservableCollection<MediaFile> _FileList = new ObservableCollection<MediaFile>();
         private MediaFile _CurrentMediaFile = null;
+        private DispatcherTimer _PlayerPositionTimer = new DispatcherTimer();
 
         public MainWindow()
         {
@@ -45,6 +47,12 @@ namespace TakenokoMusicPlayer
             this.FolderPathTextbox.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
             this.LoadConfigFile();
             this.LoadFileList();
+
+            this._PlayerPositionTimer.Interval = TimeSpan.FromSeconds(1);
+            this._PlayerPositionTimer.Tick += PlayerPositionTimer_Tick;
+            this._PlayerPositionTimer.Start();
+
+            this.CurrentPositionSlider.PreviewMouseUp += CurrentPositionSlider_PreviewMouseUp;
         }
 
         private void LoadConfigFile()
@@ -148,6 +156,26 @@ namespace TakenokoMusicPlayer
             return mediaFile;
         }
 
+        private void PlayerPositionTimer_Tick(object sender, EventArgs e)
+        {
+            if (_CurrentMediaFile == null) { return; }
+            if (this.Player.NaturalDuration.HasTimeSpan == false) { return; }
+
+            var totalSeconds = this.Player.NaturalDuration.TimeSpan.TotalSeconds;
+            var currentSeconds = this.Player.Position.TotalSeconds;
+            this.CurrentPositionSlider.Value = currentSeconds / totalSeconds * this.CurrentPositionSlider.Maximum;
+
+            this.CurrentTimeLabel.Text = String.Format("{0:00}:{1:00}", this.Player.Position.Minutes, this.Player.Position.Seconds);
+        }
+        private void CurrentPositionSlider_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (_CurrentMediaFile == null) { return; }
+            if (this.Player.NaturalDuration.HasTimeSpan == false) { return; }
+
+            var totalSeconds = this.Player.NaturalDuration.TimeSpan.TotalSeconds;
+            var currentSeconds = this.CurrentPositionSlider.Value * totalSeconds / this.CurrentPositionSlider.Maximum;
+            this.Player.Position = TimeSpan.FromSeconds(currentSeconds);
+        }
         private void Player_MediaEnded(object sender, RoutedEventArgs e)
         {
             this.Player.Stop();
