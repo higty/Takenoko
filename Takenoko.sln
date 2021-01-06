@@ -45,15 +45,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter_0019", "Chapter_001
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter_0020", "Chapter_0020\Chapter_0020.csproj", "{8369E298-7660-4BCE-8757-43D756B58673}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp_Blog", "WebApp_Blog\WebApp_Blog.csproj", "{775FA502-89AD-4D44-87C2-10379E09E821}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter_0021", "Chapter_0021\Chapter_0021.csproj", "{E100AECF-D6DC-482A-BDE7-F2827B7654FE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakenokoMusicPlayer", "TakenokoMusicPlayer\TakenokoMusicPlayer.csproj", "{F05D1CE3-0D93-4593-A35A-D4111D90C261}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter_0022", "Chapter_0022\Chapter_0022.csproj", "{C6351100-B60F-47F5-8D11-5B1F4B5FAD2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter_0022", "Chapter_0022\Chapter_0022.csproj", "{C6351100-B60F-47F5-8D11-5B1F4B5FAD2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter_0023", "Chapter_0023\Chapter_0023.csproj", "{32B19344-1748-4E46-920F-9639BE114E26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter_0023", "Chapter_0023\Chapter_0023.csproj", "{32B19344-1748-4E46-920F-9639BE114E26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -145,10 +143,6 @@ Global
 		{8369E298-7660-4BCE-8757-43D756B58673}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8369E298-7660-4BCE-8757-43D756B58673}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8369E298-7660-4BCE-8757-43D756B58673}.Release|Any CPU.Build.0 = Release|Any CPU
-		{775FA502-89AD-4D44-87C2-10379E09E821}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{775FA502-89AD-4D44-87C2-10379E09E821}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{775FA502-89AD-4D44-87C2-10379E09E821}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{775FA502-89AD-4D44-87C2-10379E09E821}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E100AECF-D6DC-482A-BDE7-F2827B7654FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E100AECF-D6DC-482A-BDE7-F2827B7654FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E100AECF-D6DC-482A-BDE7-F2827B7654FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
