@@ -1,0 +1,7 @@
+﻿<div style="color: #ff0000; font-size: 64px;">サインアップページです</div>
+
+@for (int i = 0; i < 10; i++)
+{
+    var fontsize = 10 + i * 4;
+    <div style="font-size:@String.Format("{0}px", fontsize);">@i.ToString()</div>
+}
