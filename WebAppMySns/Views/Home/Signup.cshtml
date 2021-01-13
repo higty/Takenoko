@@ -1,7 +1,39 @@
-﻿<div style="color: #ff0000; font-size: 64px;">サインアップページです</div>
+﻿<html>
+<head>
+    <style type="text/css">
+        .property-panel {
+            background-color: #e0e0f2;
+            margin: 5px 0 10px 0;
+            padding: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="property-panel">
+        <div class="property-name">名前</div>
+        <input type="text" name="DisplayName" />
+    </div>
+    <div class="property-panel">
+        <div class="property-name">Twitter</div>
+        <input type="text" name="Twitter" />
+    </div>
+    <div class="property-panel">
+        <div class="property-name">Facebook</div>
+        <input type="text" name="Facebook" />
+    </div>
+    <div class="property-panel">
+        <div class="property-name">Instagram</div>
+        <input type="text" name="Instagram" />
+    </div>
+    <div class="property-panel">
+        <div class="property-name">Youtube</div>
+        <input type="text" name="Youtube" />
+    </div>
 
-@for (int i = 0; i < 10; i++)
-{
-    var fontsize = 10 + i * 4;
-    <div style="font-size:@String.Format("{0}px", fontsize);">@i.ToString()</div>
-}
+    <div class="button-list-panel">
+        <input type="button" name="SaveButton" value="保存" />
+    </div>
+</body>
+</html>
+
+
