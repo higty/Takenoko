@@ -32,6 +32,7 @@ namespace WebAppMySns
             }
 
             app.UseRouting();
+            app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {
