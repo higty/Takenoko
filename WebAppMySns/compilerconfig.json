@@ -2,5 +2,9 @@
   {
     "outputFile": "wwwroot/Css/Common.css",
     "inputFile": "wwwroot/Css/Common.scss"
+  },
+  {
+    "outputFile": "wwwroot/Css/Slime.css",
+    "inputFile": "wwwroot/Css/Slime.scss"
   }
 ]

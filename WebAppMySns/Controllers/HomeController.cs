@@ -38,5 +38,11 @@ namespace WebAppMySns.Controllers
             var text = Encoding.UTF8.GetString(bb);
             return text;
         }
+
+        [HttpGet("/Slime")]
+        public IActionResult Slime()
+        {
+            return this.View();
+        }
     }
 }

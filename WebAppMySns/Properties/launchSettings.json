@@ -18,7 +18,7 @@
     "WebAppMySns": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "Signup",
+      "launchUrl": "Slime",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
