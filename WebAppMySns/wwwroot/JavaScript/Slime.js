@@ -1,8 +1,6 @@
 var Slime = /** @class */ (function () {
     function Slime() {
-        this._BlueList = new Array();
-        this._WhiteList = new Array();
-        this._RedList = new Array();
+        this._ColorList = new Array();
         this.Blue = "#0b9baf";
         this.White = "#ffffff";
         this.Red = "#da349c";
@@ -10,12 +8,12 @@ var Slime = /** @class */ (function () {
     Slime.prototype.initialize = function () {
         var bt = document.getElementById("StartButton");
         bt.addEventListener("click", this.StartButton_Click.bind(this));
-        this.initializeBlueList();
-        this.initializeWhiteList();
-        this.initializeRedList();
+        this.setColorList(this.getBlueList(), this.Blue);
+        this.setColorList(this.getWhiteList(), this.White);
+        this.setColorList(this.getRedList(), this.Red);
     };
-    Slime.prototype.initializeBlueList = function () {
-        var l = this._BlueList;
+    Slime.prototype.getBlueList = function () {
+        var l = new Array();
         l.push(7);
         l.push(22);
         l.push(37);
@@ -53,9 +51,10 @@ var Slime = /** @class */ (function () {
         for (var i = 0; i < l.length; i++) {
             l[i] = l[i] + 15;
         }
+        return l;
     };
-    Slime.prototype.initializeWhiteList = function () {
-        var l = this._WhiteList;
+    Slime.prototype.getWhiteList = function () {
+        var l = new Array();
         l.push(107);
         l.push(108);
         l.push(121);
@@ -73,9 +72,10 @@ var Slime = /** @class */ (function () {
         l.push(173);
         l.push(175);
         l.push(189);
+        return l;
     };
-    Slime.prototype.initializeRedList = function () {
-        var l = this._RedList;
+    Slime.prototype.getRedList = function () {
+        var l = new Array();
         l.push(183);
         l.push(198);
         l.push(199);
@@ -85,6 +85,15 @@ var Slime = /** @class */ (function () {
         l.push(205);
         l.push(206);
         l.push(191);
+        return l;
+    };
+    Slime.prototype.setColorList = function (indexList, color) {
+        for (var i = 0; i < indexList.length; i++) {
+            var colorData = new ColorData();
+            colorData.index = indexList[i];
+            colorData.color = color;
+            this._ColorList.push(colorData);
+        }
     };
     Slime.prototype.StartButton_Click = function () {
         var div = document.getElementById("SlimePanel");
@@ -98,23 +107,18 @@ var Slime = /** @class */ (function () {
             //span.innerText = div.children.length.toString();
             div.appendChild(span_1);
         }
-        for (var i = 0; i < this._BlueList.length; i++) {
-            var index = this._BlueList[i];
-            var span = div.children[index];
-            span.style["background-color"] = this.Blue;
-        }
-        for (var i = 0; i < this._WhiteList.length; i++) {
-            var index = this._WhiteList[i];
-            var span = div.children[index];
-            span.style["background-color"] = this.White;
-        }
-        for (var i = 0; i < this._RedList.length; i++) {
-            var index = this._RedList[i];
-            var span = div.children[index];
-            span.style["background-color"] = this.Red;
+        for (var i = 0; i < this._ColorList.length; i++) {
+            var colorData = this._ColorList[i];
+            var span = div.children[colorData.index];
+            span.style["background-color"] = colorData.color;
         }
     };
     return Slime;
+}());
+var ColorData = /** @class */ (function () {
+    function ColorData() {
+    }
+    return ColorData;
 }());
 document.addEventListener("DOMContentLoaded", function () {
     var page = new Slime();
