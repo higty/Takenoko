@@ -2,8 +2,9 @@
     private _panel = document.getElementById("Canvas");
 
     public initialize() {
-        const bt = document.getElementById("StartButton");
-        bt.addEventListener("click", this.StartButton_Click.bind(this));
+        document.getElementById("SlimeButton").addEventListener("click", this.SlimeButton_Click.bind(this));
+        document.getElementById("PeachSlimeButton").addEventListener("click", this.PeachSlimeButton_Click.bind(this));
+        document.getElementById("MetalSlimeButton").addEventListener("click", this.MetalSlimeButton_Click.bind(this));
 
         const div = this._panel;
         div.innerHTML = "";
@@ -15,10 +16,17 @@
         }
     }
 
-    private StartButton_Click() {
+    private SlimeButton_Click() {
         const slime = new Slime();
-        slime.loadData();
         this.Draw(slime.getColorList());
+    }
+    private PeachSlimeButton_Click() {
+        const s = new PeachSlime();
+        this.Draw(s.getColorList());
+    }
+    private MetalSlimeButton_Click() {
+        const s = new MetalSlime();
+        this.Draw(s.getColorList());
     }
     public Draw(colorList: Array<ColorData>) {
         const div = this._panel;
@@ -33,18 +41,19 @@
 
 class Slime {
     private _ColorList = new Array<ColorData>();
+    protected BodyColor = "#0b9baf";
+    protected HighlightColor = "#dddddd";
+    protected EyeColor = "#ffffff";
+    protected MouseColor = "#da349c";
 
-    public Blue = "#0b9baf";
-    public White = "#ffffff";
-    public Red = "#da349c";
-
-    public loadData() {
+    private loadData() {
         this._ColorList = new Array<ColorData>();
-        this.setColorList(this.getBlueList(), this.Blue);
-        this.setColorList(this.getWhiteList(), this.White);
-        this.setColorList(this.getRedList(), this.Red);
+        this.setColorList(this.getBodyColorList(), this.BodyColor);
+        this.setColorList(this.getHighlightColorList(), this.HighlightColor);
+        this.setColorList(this.getEyeColorList(), this.EyeColor);
+        this.setColorList(this.getMouseColorList(), this.MouseColor);
     }
-    private getBlueList(): Array<number> {
+    private getBodyColorList(): Array<number> {
         const l = new Array<number>();
         l.push(7);
         l.push(22);
@@ -88,13 +97,18 @@ class Slime {
         }
         return l;
     }
-    private getWhiteList(): Array<number> {
+    private getHighlightColorList(): Array<number> {
         const l = new Array<number>();
         l.push(107);
         l.push(108);
         l.push(121);
         l.push(122);
         l.push(136);
+
+        return l;
+    }
+    private getEyeColorList(): Array<number> {
+        const l = new Array<number>();
 
         l.push(140);
         l.push(154);
@@ -112,7 +126,7 @@ class Slime {
 
         return l;
     }
-    private getRedList(): Array<number> {
+    private getMouseColorList(): Array<number> {
         const l = new Array<number>();
         l.push(183);
         l.push(198);
@@ -136,11 +150,26 @@ class Slime {
         }
     }
 
-    public getColorList() : Array<ColorData> {
+    public getColorList(): Array<ColorData> {
+        this.loadData();
         return this._ColorList;
     }
 }
 
+class PeachSlime extends Slime {
+    constructor() {
+        super();
+        this.BodyColor = "#fb9baf";
+        this.HighlightColor = "#ffecfa";
+    }
+}
+
+class MetalSlime extends Slime {
+    constructor() {
+        super();
+        this.BodyColor = "#999999";
+    }
+}
 
 class ColorData {
     public index: number;

@@ -1,1 +1,1 @@
-﻿#StartButton{margin-top:10px;font-size:60px;}input[type=text]{width:210px;font-size:48px;font-weight:bold;}#Canvas{width:750px;}#Canvas .dot{display:inline-block;width:50px;height:50px;background-color:#000;box-sizing:border-box;}
+﻿button{margin-top:10px;font-size:60px;}input[type=text]{width:210px;font-size:48px;font-weight:bold;}#Canvas{width:750px;}#Canvas .dot{display:inline-block;width:50px;height:50px;background-color:#000;box-sizing:border-box;}
