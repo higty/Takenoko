@@ -19,6 +19,7 @@ var Canvas = /** @class */ (function () {
         document.getElementById("SlimeButton").addEventListener("click", this.SlimeButton_Click.bind(this));
         document.getElementById("PeachSlimeButton").addEventListener("click", this.PeachSlimeButton_Click.bind(this));
         document.getElementById("MetalSlimeButton").addEventListener("click", this.MetalSlimeButton_Click.bind(this));
+        document.getElementById("SizeSlider").addEventListener("change", this.SizeSlider_Change.bind(this));
         var div = this._panel;
         div.innerHTML = "";
         for (var i = 0; i < 255; i++) {
@@ -39,6 +40,16 @@ var Canvas = /** @class */ (function () {
     Canvas.prototype.MetalSlimeButton_Click = function () {
         var s = new MetalSlime();
         this.Draw(s.getColorList());
+    };
+    Canvas.prototype.SizeSlider_Change = function (e) {
+        var v = parseInt(document.getElementById("SizeSlider").value);
+        var div = this._panel;
+        for (var i = 0; i < 255; i++) {
+            var span = div.children[i];
+            span.style["width"] = v + "px";
+            span.style["height"] = v + "px";
+        }
+        div.style["width"] = (v * 15) + "px";
     };
     Canvas.prototype.Draw = function (colorList) {
         var div = this._panel;

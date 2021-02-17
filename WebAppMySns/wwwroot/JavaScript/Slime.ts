@@ -1,10 +1,11 @@
 ﻿class Canvas {
-    private _panel = document.getElementById("Canvas");
+    private _panel = document.getElementById("Canvas") as HTMLElement;
 
     public initialize() {
         document.getElementById("SlimeButton").addEventListener("click", this.SlimeButton_Click.bind(this));
         document.getElementById("PeachSlimeButton").addEventListener("click", this.PeachSlimeButton_Click.bind(this));
         document.getElementById("MetalSlimeButton").addEventListener("click", this.MetalSlimeButton_Click.bind(this));
+        document.getElementById("SizeSlider").addEventListener("change", this.SizeSlider_Change.bind(this));
 
         const div = this._panel;
         div.innerHTML = "";
@@ -27,6 +28,16 @@
     private MetalSlimeButton_Click() {
         const s = new MetalSlime();
         this.Draw(s.getColorList());
+    }
+    private SizeSlider_Change(e: Event) {
+        const v = parseInt((document.getElementById("SizeSlider") as HTMLInputElement).value);
+        const div = this._panel;
+        for (var i = 0; i < 255; i++) {
+            let span = div.children[i] as HTMLElement;
+            span.style["width"] = v + "px";
+            span.style["height"] = v + "px";
+        }
+        div.style["width"] = (v * 15) + "px";
     }
     public Draw(colorList: Array<ColorData>) {
         const div = this._panel;
