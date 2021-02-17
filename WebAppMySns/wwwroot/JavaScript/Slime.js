@@ -1,3 +1,34 @@
+var Canvas = /** @class */ (function () {
+    function Canvas() {
+        this._panel = document.getElementById("Canvas");
+    }
+    Canvas.prototype.initialize = function () {
+        var bt = document.getElementById("StartButton");
+        bt.addEventListener("click", this.StartButton_Click.bind(this));
+        var div = this._panel;
+        div.innerHTML = "";
+        for (var i = 0; i < 255; i++) {
+            var span = document.createElement("span");
+            span.classList.add("dot");
+            //span.innerText = div.children.length.toString();
+            div.appendChild(span);
+        }
+    };
+    Canvas.prototype.StartButton_Click = function () {
+        var slime = new Slime();
+        slime.loadData();
+        this.Draw(slime.getColorList());
+    };
+    Canvas.prototype.Draw = function (colorList) {
+        var div = this._panel;
+        for (var i = 0; i < colorList.length; i++) {
+            var colorData = colorList[i];
+            var span = div.children[colorData.index];
+            span.style["background-color"] = colorData.color;
+        }
+    };
+    return Canvas;
+}());
 var Slime = /** @class */ (function () {
     function Slime() {
         this._ColorList = new Array();
@@ -5,9 +36,8 @@ var Slime = /** @class */ (function () {
         this.White = "#ffffff";
         this.Red = "#da349c";
     }
-    Slime.prototype.initialize = function () {
-        var bt = document.getElementById("StartButton");
-        bt.addEventListener("click", this.StartButton_Click.bind(this));
+    Slime.prototype.loadData = function () {
+        this._ColorList = new Array();
         this.setColorList(this.getBlueList(), this.Blue);
         this.setColorList(this.getWhiteList(), this.White);
         this.setColorList(this.getRedList(), this.Red);
@@ -95,23 +125,8 @@ var Slime = /** @class */ (function () {
             this._ColorList.push(colorData);
         }
     };
-    Slime.prototype.StartButton_Click = function () {
-        var div = document.getElementById("SlimePanel");
-        this.Blue = document.getElementById("BlueTextBox").value;
-        this.White = document.getElementById("WhiteTextBox").value;
-        this.Red = document.getElementById("RedTextBox").value;
-        div.innerHTML = "";
-        for (var i = 0; i < 255; i++) {
-            var span_1 = document.createElement("span");
-            span_1.classList.add("dot");
-            //span.innerText = div.children.length.toString();
-            div.appendChild(span_1);
-        }
-        for (var i = 0; i < this._ColorList.length; i++) {
-            var colorData = this._ColorList[i];
-            var span = div.children[colorData.index];
-            span.style["background-color"] = colorData.color;
-        }
+    Slime.prototype.getColorList = function () {
+        return this._ColorList;
     };
     return Slime;
 }());
@@ -121,7 +136,7 @@ var ColorData = /** @class */ (function () {
     return ColorData;
 }());
 document.addEventListener("DOMContentLoaded", function () {
-    var page = new Slime();
+    var page = new Canvas();
     page.initialize();
 });
 //# sourceMappingURL=Slime.js.map

@@ -7,9 +7,9 @@ input[type=text] {
   font-size: 48px;
   font-weight: bold; }
 
-#SlimePanel {
+#Canvas {
   width: 750px; }
-  #SlimePanel .dot {
+  #Canvas .dot {
     display: inline-block;
     width: 50px;
     height: 50px;
