@@ -49,5 +49,11 @@ namespace WebAppMySns.Controllers
         {
             return this.View();
         }
+
+        [HttpGet("/Sample1")]
+        public IActionResult Sample1()
+        {
+            return this.View();
+        }
     }
 }

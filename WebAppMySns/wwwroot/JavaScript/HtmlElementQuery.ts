@@ -78,5 +78,6 @@
     }
     public focus(callback: EventListenerOrEventListenerObject) {
         this.addEventListenerToAllElement("focus", callback);
+
     }
 }

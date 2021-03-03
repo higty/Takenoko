@@ -6,5 +6,9 @@
   {
     "outputFile": "wwwroot/Css/Slime.css",
     "inputFile": "wwwroot/Css/Slime.scss"
+  },
+  {
+    "outputFile": "wwwroot/Css/Sample1.css",
+    "inputFile": "wwwroot/Css/Sample1.scss"
   }
 ]
