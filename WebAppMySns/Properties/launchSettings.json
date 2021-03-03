@@ -18,7 +18,7 @@
     "WebAppMySns": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "Slime",
+      "launchUrl": "HtmlElementQueryPage",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

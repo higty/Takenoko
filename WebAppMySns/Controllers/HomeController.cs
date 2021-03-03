@@ -44,5 +44,10 @@ namespace WebAppMySns.Controllers
         {
             return this.View();
         }
+        [HttpGet("/HtmlElementQueryPage")]
+        public IActionResult HtmlElementQueryPage()
+        {
+            return this.View();
+        }
     }
 }

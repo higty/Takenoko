@@ -1,0 +1,17 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "ES5",
+    "module": "ES2015"
+  },
+  "include": [
+    "wwwroot/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
