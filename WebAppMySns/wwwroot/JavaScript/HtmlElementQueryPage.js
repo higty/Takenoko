@@ -3,12 +3,65 @@ var HtmlElementQueryPage = /** @class */ (function () {
     function HtmlElementQueryPage() {
     }
     HtmlElementQueryPage.prototype.initialize = function () {
-        var q = new HtmlElementQuery("div");
-        q.setStyle("background-color", "#ff0000");
+        this.setTopPanel();
+        this.setTopPanel_2();
+        this.setChildPanel();
+        this.setTextPanel();
+        this.setAttribute_Event();
+        document.getElementById("HideButton").addEventListener("click", this.hideButton_Click.bind(this));
+        document.getElementById("ShowButton").addEventListener("click", this.showPanel_Click.bind(this));
+        this.addEventListnerToTextPanel();
+    };
+    HtmlElementQueryPage.prototype.setTopPanel = function () {
+        var q = new HtmlElementQuery("body > div");
+        q.setStyle("background-color", "#fff4e0");
+        q.setStyle("padding", "10px");
+    };
+    HtmlElementQueryPage.prototype.setTopPanel_2 = function () {
+        var q = new HtmlElementQuery("#ViewPanel2");
+        q.setStyle("background-color", "#ffa022");
+        q.setStyle("padding", "10px");
+    };
+    HtmlElementQueryPage.prototype.setChildPanel = function () {
+        var q = new HtmlElementQuery("div .panel");
+        q.setStyle("background-color", "#ffe0e8");
         q.setStyle("color", "#fffff");
         q.setStyle("width", "200px");
         q.setStyle("margin-bottom", "10px");
         q.setStyle("padding", "10px");
+    };
+    HtmlElementQueryPage.prototype.setTextPanel = function () {
+        var q = new HtmlElementQuery(".text-panel");
+        q.setStyle("background-color", "#cccccc");
+        q.setStyle("padding", "10px");
+        q.setStyle("margin-bottom", "4px");
+    };
+    HtmlElementQueryPage.prototype.setAttribute_Event = function () {
+        var q = new HtmlElementQuery(".text-panel");
+        q.setAttribute("event-panel", "true");
+    };
+    HtmlElementQueryPage.prototype.hideButton_Click = function (e) {
+        this.hidePanel();
+    };
+    HtmlElementQueryPage.prototype.hidePanel = function () {
+        var q = new HtmlElementQuery("[event-panel]");
+        q.hide();
+    };
+    HtmlElementQueryPage.prototype.showPanel_Click = function (e) {
+        this.showPanel();
+    };
+    HtmlElementQueryPage.prototype.showPanel = function () {
+        var q = new HtmlElementQuery("[event-panel]");
+        q.removeStyle("display");
+    };
+    HtmlElementQueryPage.prototype.addEventListnerToTextPanel = function () {
+        var q = new HtmlElementQuery(".text-panel");
+        q.click(this.textPanel_Click.bind(this));
+    };
+    HtmlElementQueryPage.prototype.textPanel_Click = function (e) {
+        var element = e.srcElement;
+        var q = new HtmlElementQuery(element);
+        alert(q.getInnerText());
     };
     return HtmlElementQueryPage;
 }());

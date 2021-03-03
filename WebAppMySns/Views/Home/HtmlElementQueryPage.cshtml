@@ -3,9 +3,27 @@
     <title>HtmlElementQuery.tsを作成するためのページです</title>
 </head>
 <body>
-    <div class="card-panel">パネル1</div>
-    <div class="panel">パネル2</div>
-    <div class="panel">パネル3</div>
+    <div id="ViewPanel1">
+        <div class="panel">パネル1</div>
+        <div class="panel">パネル2</div>
+        <div class="panel">パネル3</div>
+    </div>
+    <div id="ViewPanel2">
+        <div class="panel">パネル1</div>
+        <div class="panel">パネル2</div>
+        <div class="panel">パネル3</div>
+    </div>
+    <div id="ViewPanel3">
+        <div class="panel">
+            <input type="button" id="HideButton" value="Hide" />
+            <input type="button" id="ShowButton" value="Show" />
+            <div class="text-panel">P1</div>
+            <div class="text-panel">P2</div>
+            <div class="text-panel">P3</div>
+        </div>
+        <div class="panel">パネル2</div>
+        <div class="panel">パネル3</div>
+    </div>
     <script src="~/JavaScript/HtmlElementQueryPage.js" type="module"></script>
 </body>
 </html>
