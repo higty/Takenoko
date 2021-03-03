@@ -34,6 +34,19 @@ var HtmlElementQuery = /** @class */ (function () {
             element.setAttribute(name, value);
         }
     };
+    HtmlElementQuery.prototype.getValue = function () {
+        if (this._elementList.length > 0) {
+            var element = this._elementList[0];
+            if (element === null) {
+                return "";
+            }
+            if (element.value == null) {
+                return "";
+            }
+            return element.value;
+        }
+        return "";
+    };
     HtmlElementQuery.prototype.getInnerText = function () {
         if (this._elementList.length > 0) {
             var element = this._elementList[0];
@@ -47,11 +60,23 @@ var HtmlElementQuery = /** @class */ (function () {
             element.style["display"] = "none";
         }
     };
-    HtmlElementQuery.prototype.click = function (callback) {
+    HtmlElementQuery.prototype.addEventListenerToAllElement = function (eventName, callback) {
         for (var i = 0; i < this._elementList.length; i++) {
             var element = this._elementList[i];
-            element.addEventListener("click", callback);
+            element.addEventListener(eventName, callback);
         }
+    };
+    HtmlElementQuery.prototype.click = function (callback) {
+        this.addEventListenerToAllElement("click", callback);
+    };
+    HtmlElementQuery.prototype.mouseover = function (callback) {
+        this.addEventListenerToAllElement("mouseover", callback);
+    };
+    HtmlElementQuery.prototype.mouseout = function (callback) {
+        this.addEventListenerToAllElement("mouseout", callback);
+    };
+    HtmlElementQuery.prototype.focus = function (callback) {
+        this.addEventListenerToAllElement("focus", callback);
     };
     return HtmlElementQuery;
 }());

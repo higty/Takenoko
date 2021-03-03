@@ -57,11 +57,23 @@ var HtmlElementQueryPage = /** @class */ (function () {
     HtmlElementQueryPage.prototype.addEventListnerToTextPanel = function () {
         var q = new HtmlElementQuery(".text-panel");
         q.click(this.textPanel_Click.bind(this));
+        q.mouseover(this.textPanel_Mouseover.bind(this));
+        q.mouseout(this.textPanel_Mouseout.bind(this));
     };
     HtmlElementQueryPage.prototype.textPanel_Click = function (e) {
         var element = e.srcElement;
         var q = new HtmlElementQuery(element);
         alert(q.getInnerText());
+    };
+    HtmlElementQueryPage.prototype.textPanel_Mouseover = function (e) {
+        var element = e.srcElement;
+        var q = new HtmlElementQuery(element);
+        q.setStyle("font-size", "32px");
+    };
+    HtmlElementQueryPage.prototype.textPanel_Mouseout = function (e) {
+        var element = e.srcElement;
+        var q = new HtmlElementQuery(element);
+        q.removeStyle("font-size");
     };
     return HtmlElementQueryPage;
 }());

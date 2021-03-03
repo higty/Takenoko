@@ -37,6 +37,15 @@
         }
     }
 
+    public getValue(): string {
+        if (this._elementList.length > 0) {
+            const element = this._elementList[0] as HTMLInputElement;
+            if (element === null) { return ""; }
+            if (element.value == null) { return ""; }
+            return element.value;
+        }
+        return "";
+    }
     public getInnerText() {
         if (this._elementList.length > 0) {
             let element = this._elementList[0] as HTMLElement;
@@ -52,10 +61,22 @@
         }
     }
 
-    public click(callback: EventListenerOrEventListenerObject) {
+    private addEventListenerToAllElement(eventName: string, callback: EventListenerOrEventListenerObject) {
         for (var i = 0; i < this._elementList.length; i++) {
             let element = this._elementList[i] as HTMLElement;
-            element.addEventListener("click", callback);
+            element.addEventListener(eventName, callback);
         }
+    }
+    public click(callback: EventListenerOrEventListenerObject) {
+        this.addEventListenerToAllElement("click", callback);
+    }
+    public mouseover(callback: EventListenerOrEventListenerObject) {
+        this.addEventListenerToAllElement("mouseover", callback);
+    }
+    public mouseout(callback: EventListenerOrEventListenerObject) {
+        this.addEventListenerToAllElement("mouseout", callback);
+    }
+    public focus(callback: EventListenerOrEventListenerObject) {
+        this.addEventListenerToAllElement("focus", callback);
     }
 }

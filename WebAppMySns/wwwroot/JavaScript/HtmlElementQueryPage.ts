@@ -61,12 +61,23 @@ class HtmlElementQueryPage {
     private addEventListnerToTextPanel() {
         const q = new HtmlElementQuery(".text-panel");
         q.click(this.textPanel_Click.bind(this));
+        q.mouseover(this.textPanel_Mouseover.bind(this));
+        q.mouseout(this.textPanel_Mouseout.bind(this));
     }
     private textPanel_Click(e: Event) {
         const element = e.srcElement as Element;
-        const q = new HtmlElementQuery(element);
-       
+        const q = new HtmlElementQuery(element);      
         alert(q.getInnerText());
+    }
+    private textPanel_Mouseover(e: Event) {
+        const element = e.srcElement as Element;
+        const q = new HtmlElementQuery(element);
+        q.setStyle("font-size", "32px");
+    }
+    private textPanel_Mouseout(e: Event) {
+        const element = e.srcElement as Element;
+        const q = new HtmlElementQuery(element);
+        q.removeStyle("font-size");
     }
 }
 
