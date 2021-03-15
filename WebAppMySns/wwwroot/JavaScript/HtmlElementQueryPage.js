@@ -1,4 +1,4 @@
-import { HtmlElementQuery } from "./HtmlElementQuery.js";
+import { $ } from "./HtmlElementQuery.js";
 var HtmlElementQueryPage = /** @class */ (function () {
     function HtmlElementQueryPage() {
     }
@@ -13,17 +13,17 @@ var HtmlElementQueryPage = /** @class */ (function () {
         this.addEventListnerToTextPanel();
     };
     HtmlElementQueryPage.prototype.setTopPanel = function () {
-        var q = new HtmlElementQuery("body > div");
+        var q = $("body > div");
         q.setStyle("background-color", "#fff4e0");
         q.setStyle("padding", "10px");
     };
     HtmlElementQueryPage.prototype.setTopPanel_2 = function () {
-        var q = new HtmlElementQuery("#ViewPanel2");
+        var q = $("#ViewPanel2");
         q.setStyle("background-color", "#ffa022");
         q.setStyle("padding", "10px");
     };
     HtmlElementQueryPage.prototype.setChildPanel = function () {
-        var q = new HtmlElementQuery("div .panel");
+        var q = $("div .panel");
         q.setStyle("background-color", "#ffe0e8");
         q.setStyle("color", "#fffff");
         q.setStyle("width", "200px");
@@ -31,48 +31,48 @@ var HtmlElementQueryPage = /** @class */ (function () {
         q.setStyle("padding", "10px");
     };
     HtmlElementQueryPage.prototype.setTextPanel = function () {
-        var q = new HtmlElementQuery(".text-panel");
+        var q = $(".text-panel");
         q.setStyle("background-color", "#cccccc");
         q.setStyle("padding", "10px");
         q.setStyle("margin-bottom", "4px");
     };
     HtmlElementQueryPage.prototype.setAttribute_Event = function () {
-        var q = new HtmlElementQuery(".text-panel");
+        var q = $(".text-panel");
         q.setAttribute("event-panel", "true");
     };
     HtmlElementQueryPage.prototype.hideButton_Click = function (e) {
         this.hidePanel();
     };
     HtmlElementQueryPage.prototype.hidePanel = function () {
-        var q = new HtmlElementQuery("[event-panel]");
+        var q = $("[event-panel]");
         q.hide();
     };
     HtmlElementQueryPage.prototype.showPanel_Click = function (e) {
         this.showPanel();
     };
     HtmlElementQueryPage.prototype.showPanel = function () {
-        var q = new HtmlElementQuery("[event-panel]");
+        var q = $("[event-panel]");
         q.removeStyle("display");
     };
     HtmlElementQueryPage.prototype.addEventListnerToTextPanel = function () {
-        var q = new HtmlElementQuery(".text-panel");
+        var q = $(".text-panel");
         q.click(this.textPanel_Click.bind(this));
         q.mouseover(this.textPanel_Mouseover.bind(this));
         q.mouseout(this.textPanel_Mouseout.bind(this));
     };
     HtmlElementQueryPage.prototype.textPanel_Click = function (e) {
         var element = e.srcElement;
-        var q = new HtmlElementQuery(element);
+        var q = $(element);
         alert(q.getInnerText());
     };
     HtmlElementQueryPage.prototype.textPanel_Mouseover = function (e) {
         var element = e.srcElement;
-        var q = new HtmlElementQuery(element);
+        var q = $(element);
         q.setStyle("font-size", "32px");
     };
     HtmlElementQueryPage.prototype.textPanel_Mouseout = function (e) {
         var element = e.srcElement;
-        var q = new HtmlElementQuery(element);
+        var q = $(element);
         q.removeStyle("font-size");
     };
     return HtmlElementQueryPage;

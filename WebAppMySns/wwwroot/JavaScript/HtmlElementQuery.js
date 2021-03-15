@@ -1,3 +1,6 @@
+export function $(value) {
+    return new HtmlElementQuery(value);
+}
 var HtmlElementQuery = /** @class */ (function () {
     function HtmlElementQuery(value) {
         this._elementList = new Array();

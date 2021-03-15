@@ -1,4 +1,4 @@
-﻿import { HtmlElementQuery } from "./HtmlElementQuery.js";
+﻿import { HtmlElementQuery, $ } from "./HtmlElementQuery.js";
 
 class HtmlElementQueryPage {
     public initialize() {
@@ -14,18 +14,19 @@ class HtmlElementQueryPage {
 
         this.addEventListnerToTextPanel();
     }
+
     private setTopPanel() {
-        const q = new HtmlElementQuery("body > div");
+        const q = $("body > div");
         q.setStyle("background-color", "#fff4e0");
         q.setStyle("padding", "10px");
     }
     private setTopPanel_2() {
-        const q = new HtmlElementQuery("#ViewPanel2");
+        const q = $("#ViewPanel2");
         q.setStyle("background-color", "#ffa022");
         q.setStyle("padding", "10px");
     }
     private setChildPanel() {
-        const q = new HtmlElementQuery("div .panel");
+        const q = $("div .panel");
         q.setStyle("background-color", "#ffe0e8");
         q.setStyle("color", "#fffff");
         q.setStyle("width", "200px");
@@ -33,14 +34,14 @@ class HtmlElementQueryPage {
         q.setStyle("padding", "10px");
     }
     private setTextPanel() {
-        const q = new HtmlElementQuery(".text-panel");
+        const q = $(".text-panel");
         q.setStyle("background-color", "#cccccc");
         q.setStyle("padding", "10px");
         q.setStyle("margin-bottom", "4px");
     }
 
     private setAttribute_Event() {
-        const q = new HtmlElementQuery(".text-panel");
+        const q = $(".text-panel");
         q.setAttribute("event-panel", "true");
     }
 
@@ -48,35 +49,35 @@ class HtmlElementQueryPage {
         this.hidePanel();
     }
     private hidePanel() {
-        const q = new HtmlElementQuery("[event-panel]");
+        const q = $("[event-panel]");
         q.hide();
     }
     private showPanel_Click(e: Event) {
         this.showPanel();
     }
     private showPanel() {
-        const q = new HtmlElementQuery("[event-panel]");
+        const q = $("[event-panel]");
         q.removeStyle("display");
     }
     private addEventListnerToTextPanel() {
-        const q = new HtmlElementQuery(".text-panel");
+        const q = $(".text-panel");
         q.click(this.textPanel_Click.bind(this));
         q.mouseover(this.textPanel_Mouseover.bind(this));
         q.mouseout(this.textPanel_Mouseout.bind(this));
     }
     private textPanel_Click(e: Event) {
         const element = e.srcElement as Element;
-        const q = new HtmlElementQuery(element);      
+        const q = $(element);      
         alert(q.getInnerText());
     }
     private textPanel_Mouseover(e: Event) {
         const element = e.srcElement as Element;
-        const q = new HtmlElementQuery(element);
+        const q = $(element);
         q.setStyle("font-size", "32px");
     }
     private textPanel_Mouseout(e: Event) {
         const element = e.srcElement as Element;
-        const q = new HtmlElementQuery(element);
+        const q = $(element);
         q.removeStyle("font-size");
     }
 }

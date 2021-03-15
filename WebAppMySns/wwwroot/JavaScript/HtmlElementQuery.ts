@@ -1,4 +1,8 @@
-﻿export class HtmlElementQuery {
+﻿export function $(value: string | Element | Array<Element>): HtmlElementQuery {
+    return new HtmlElementQuery(value);
+}
+
+export class HtmlElementQuery {
     private _elementList = new Array<Element>();
 
     constructor(value: string | Element | Array<Element>) {
