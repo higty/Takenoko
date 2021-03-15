@@ -7,16 +7,18 @@ var Page = /** @class */ (function () {
     };
     Page.prototype.SaveButton_Click = function () {
         var tx = document.getElementsByName("DisplayName")[0];
-        var tx1 = document.getElementsByName("Twitter")[0];
-        var tx2 = document.getElementsByName("Facebook")[0];
-        var tx3 = document.getElementsByName("Instagram")[0];
-        var tx4 = document.getElementsByName("Youtube")[0];
+        var tx1 = document.getElementsByName("ID")[0];
+        var tx2 = document.getElementsByName("Twitter")[0];
+        var tx3 = document.getElementsByName("Facebook")[0];
+        var tx4 = document.getElementsByName("Instagram")[0];
+        var tx5 = document.getElementsByName("Youtube")[0];
         var r = {
             DisplayName: tx.value,
-            Twitter: tx1.value,
-            Facebook: tx2.value,
-            Instagram: tx3.value,
-            Youtube: tx4.value,
+            ID: tx1.value,
+            Twitter: tx2.value,
+            Facebook: tx3.value,
+            Instagram: tx4.value,
+            Youtube: tx5.value,
         };
         var json = JSON.stringify(r);
         var request = new XMLHttpRequest();

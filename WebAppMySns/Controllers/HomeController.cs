@@ -6,6 +6,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HigLabo.Data;
+using Newtonsoft.Json;
+using System.Data.SqlClient;
 
 namespace WebAppMySns.Controllers
 {
@@ -25,6 +28,22 @@ namespace WebAppMySns.Controllers
         public async Task<Object> Api_Signup()
         {
             var json = await GetRequestBodyText();
+            var rUser = JsonConvert.DeserializeObject<UserRecord>(json);
+
+            //DBにユーザーを登録する
+            var db = new SqlServerDatabase(WebApp.Current.Config.ConnectionString);
+            var cm = new SqlCommand();
+            cm.CommandText = "insert into [User](UserCD,DisplayName,ID,Twitter,Facebook,Instagram,Youtube)"
+                + "values(@UserCD,@DisplayName,@ID,@Twitter,@Facebook,@Instagram,@Youtube)";
+            cm.Parameters.AddWithValue("@UserCD", Guid.NewGuid());
+            cm.Parameters.AddWithValue("@DisplayName", rUser.DisplayName);
+            cm.Parameters.AddWithValue("@ID", rUser.ID);
+            cm.Parameters.AddWithValue("@Twitter", rUser.Twitter);
+            cm.Parameters.AddWithValue("@Facebook", rUser.Facebook);
+            cm.Parameters.AddWithValue("@Instagram", rUser.Instagram);
+            cm.Parameters.AddWithValue("@Youtube", rUser.Youtube);
+
+            var insertCount = db.ExecuteCommand(cm);
 
             return "実行完了！";
         }

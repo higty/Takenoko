@@ -5,17 +5,19 @@
     }
     private SaveButton_Click() {
         const tx = document.getElementsByName("DisplayName")[0] as HTMLInputElement;
-        const tx1 = document.getElementsByName("Twitter")[0] as HTMLInputElement;
-        const tx2 = document.getElementsByName("Facebook")[0] as HTMLInputElement;
-        const tx3 = document.getElementsByName("Instagram")[0] as HTMLInputElement;
-        const tx4 = document.getElementsByName("Youtube")[0] as HTMLInputElement;
+        const tx1 = document.getElementsByName("ID")[0] as HTMLInputElement;
+        const tx2 = document.getElementsByName("Twitter")[0] as HTMLInputElement;
+        const tx3 = document.getElementsByName("Facebook")[0] as HTMLInputElement;
+        const tx4 = document.getElementsByName("Instagram")[0] as HTMLInputElement;
+        const tx5 = document.getElementsByName("Youtube")[0] as HTMLInputElement;
 
         var r = {
             DisplayName: tx.value,
-            Twitter: tx1.value,
-            Facebook: tx2.value,
-            Instagram: tx3.value,
-            Youtube: tx4.value,
+            ID: tx1.value,
+            Twitter: tx2.value,
+            Facebook: tx3.value,
+            Instagram: tx4.value,
+            Youtube: tx5.value,
         };
         const json = JSON.stringify(r);
 
