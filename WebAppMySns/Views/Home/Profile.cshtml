@@ -1,0 +1,39 @@
+﻿@model WebAppMySns.UserRecord
+
+<html>
+    <head>
+        <title>プロフィールページです</title>
+        <link rel="stylesheet" href="~/Css/Common.css" />
+    </head>
+    <body>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="property-name">名前</td>
+                    <td>@Model.DisplayName</td>
+                </tr>
+                <tr>
+                    <td class="property-name">ID</td>
+                    <td>@Model.ID</td>
+                </tr>
+                <tr>
+                    <td class="property-name">Twitter</td>
+                    <td>@Model.Twitter</td>
+                </tr>
+                <tr>
+                    <td class="property-name">Facebook</td>
+                    <td>@Model.Facebook</td>
+                </tr>
+                <tr>
+                    <td class="property-name">Youtube</td>
+                    <td>@Model.Youtube</td>
+                </tr>
+                <tr>
+                    <td class="property-name">Instagram</td>
+                    <td>@Model.Instagram</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </body>
+</html>

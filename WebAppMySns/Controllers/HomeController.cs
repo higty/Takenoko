@@ -31,21 +31,27 @@ namespace WebAppMySns.Controllers
             var rUser = JsonConvert.DeserializeObject<UserRecord>(json);
 
             //DBにユーザーを登録する
-            var db = new SqlServerDatabase(WebApp.Current.Config.ConnectionString);
-            var cm = new SqlCommand();
-            cm.CommandText = "insert into [User](UserCD,DisplayName,ID,Twitter,Facebook,Instagram,Youtube)"
-                + "values(@UserCD,@DisplayName,@ID,@Twitter,@Facebook,@Instagram,@Youtube)";
-            cm.Parameters.AddWithValue("@UserCD", Guid.NewGuid());
-            cm.Parameters.AddWithValue("@DisplayName", rUser.DisplayName);
-            cm.Parameters.AddWithValue("@ID", rUser.ID);
-            cm.Parameters.AddWithValue("@Twitter", rUser.Twitter);
-            cm.Parameters.AddWithValue("@Facebook", rUser.Facebook);
-            cm.Parameters.AddWithValue("@Instagram", rUser.Instagram);
-            cm.Parameters.AddWithValue("@Youtube", rUser.Youtube);
+            try
+            {
+                var db = new SqlServerDatabase(WebApp.Current.Config.ConnectionString);
+                var cm = new SqlCommand();
+                cm.CommandText = "insert into [User](UserCD,DisplayName,ID,Twitter,Facebook,Instagram,Youtube)"
+                    + "values(@UserCD,@DisplayName,@ID,@Twitter,@Facebook,@Instagram,@Youtube)";
+                cm.Parameters.AddWithValue("@UserCD", Guid.NewGuid());
+                cm.Parameters.AddWithValue("@DisplayName", rUser.DisplayName);
+                cm.Parameters.AddWithValue("@ID", rUser.ID);
+                cm.Parameters.AddWithValue("@Twitter", rUser.Twitter);
+                cm.Parameters.AddWithValue("@Facebook", rUser.Facebook);
+                cm.Parameters.AddWithValue("@Instagram", rUser.Instagram);
+                cm.Parameters.AddWithValue("@Youtube", rUser.Youtube);
 
-            var insertCount = db.ExecuteCommand(cm);
-
-            return "実行完了！";
+                var insertCount = db.ExecuteCommand(cm);
+                return "実行完了！";
+            }
+            catch (Exception ex) when (ex.Message.Contains("User_Uk_ID") == true)
+            {
+                return "IDが重複しているよ！";
+            }
         }
         private async Task<String> GetRequestBodyText()
         {
@@ -56,6 +62,29 @@ namespace WebAppMySns.Controllers
             var bb = m.ToArray();
             var text = Encoding.UTF8.GetString(bb);
             return text;
+        }
+
+        [HttpGet("/Profile/{id}")]
+        public IActionResult Profile(String id)
+        {
+            //DBから取得してセット
+            var db = new SqlServerDatabase(WebApp.Current.Config.ConnectionString);
+            var cm = new SqlCommand();
+            cm.CommandText = "select * from [User] where ID = @ID";
+            cm.Parameters.AddWithValue("@ID", id);
+            var dr = db.ExecuteReader(cm);
+
+            var model = new UserRecord();
+            while (dr.Read())
+            {
+                model.DisplayName = dr["DisplayName"].ToString();
+                model.ID = id;
+                model.Twitter = dr["Twitter"].ToString();
+                model.Facebook = dr["Facebook"].ToString();
+                model.Instagram = dr["Instagram"].ToString();
+                model.Youtube = dr["Youtube"].ToString();
+            }
+            return this.View(model);
         }
 
         [HttpGet("/Slime")]

@@ -1,4 +1,15 @@
-﻿.property-panel {
+﻿table {
+  table-layout: fixed;
+  border-collapse: collapse; }
+  table td {
+    width: 200px;
+    border: solid 1px #ffccf0;
+    padding: 4px; }
+  table td.property-name {
+    width: 100px;
+    background-color: #ffc0f0; }
+
+.property-panel {
   background-color: #e0e0f2;
   margin: 5px 0 10px 0;
   padding: 10px; }

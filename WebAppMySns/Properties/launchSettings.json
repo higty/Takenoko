@@ -18,7 +18,7 @@
     "WebAppMySns": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "Signup",
+      "launchUrl": "Profile/mary",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
