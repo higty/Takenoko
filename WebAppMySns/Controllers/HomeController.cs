@@ -17,8 +17,30 @@ namespace WebAppMySns.Controllers
         [HttpGet("/")]
         public IActionResult Root()
         {
-            return this.View();
+            var model = new RootPage();
+            var db = new SqlServerDatabase(WebApp.Current.Config.ConnectionString);
+            var cm = new SqlCommand();
+            cm.CommandText = "select * from [User]";
+            var dr = db.ExecuteReader(cm);
+
+            while (dr.Read())
+            {
+                var r = new UserRecord();
+                r.DisplayName = dr["DisplayName"].ToString();
+                r.ID = dr["ID"].ToString();
+                r.Twitter = dr["Twitter"].ToString();
+                r.Facebook = dr["Facebook"].ToString();
+                r.Instagram = dr["Instagram"].ToString();
+                r.Youtube = dr["Youtube"].ToString();
+                model.UserList.Add(r);
+            }
+            return this.View(model);
         }
+        public class RootPage
+        {
+            public List<UserRecord> UserList { get; private set; } = new List<UserRecord>();
+        }
+
         [HttpGet("/Signup")]
         public IActionResult Signup()
         {

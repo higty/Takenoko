@@ -1,3 +1,22 @@
-﻿<div style="color: #ff0000; font-size: 64px;">マイSNSサイトです</div>
+﻿@model WebAppMySns.Controllers.HomeController.RootPage
 
-<a href="/Signup">サインアップ</a>
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/Css/Common.css" />
+</head>
+    <body>
+        <div style="color: #ff0000; font-size: 64px;">マイSNSサイトです</div>
+
+        @foreach (var item in Model.UserList)
+        {
+            <div class="user-panel">
+                <a href="/Profile/@item.ID">@item.DisplayName</a>
+            </div>
+        }
+        <a href="/Signup">サインアップ</a>
+    </body>
+</html>
+
+
