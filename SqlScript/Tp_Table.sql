@@ -11,16 +11,7 @@ CREATE TABLE [User]
 )
 GO
 
-
-SELECT * FROM [User]
-GO
-
-
-
-
-
-
-
-
+ALTER TABLE [User] Add CONSTRAINT User_Uk_ID UNIQUE (ID)
+Go   
 
 
