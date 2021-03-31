@@ -10,6 +10,7 @@ namespace WebAppMySns
         public Guid UserCD { get; set; }
         public String DisplayName { get; set; }
         public String ID { get; set; }
+        public String Password { get; set; }
         public String Twitter { get; set; }
         public String Facebook { get; set; }
         public String Instagram { get; set; }

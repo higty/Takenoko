@@ -15,3 +15,7 @@ ALTER TABLE [User] Add CONSTRAINT User_Uk_ID UNIQUE (ID)
 Go   
 
 
+select * from [User]
+
+
+

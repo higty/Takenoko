@@ -1,4 +1,4 @@
-﻿import { HtmlElementQuery } from "./HtmlElementQuery.js";
+﻿import { $, HtmlElementQuery } from "./HtmlElementQuery.js";
 
 class Sample1Page {
     public initialize() {
@@ -8,19 +8,19 @@ class Sample1Page {
         document.getElementById("ColorChangeButton").addEventListener("click", this.colorChangeButton_Click.bind(this));
     }
     private setPanel1() {
-        const q = new HtmlElementQuery("#Panel1");
+        const q = $("#Panel1");
         q.setStyle("background-color", "#48d1cc");
     }
     private setPanel2() {
-        const q = new HtmlElementQuery("#Panel2");
+        const q = $("#Panel2");
         q.setStyle("background-color", "#afeeee");
     }
     private setPanel3() {
-        const q = new HtmlElementQuery("#Panel3");
+        const q = $("#Panel3");
     }
     private colorChangeButton_Click(e: Event) {
-        const q = new HtmlElementQuery("#ColorText");
-        const q1 = new HtmlElementQuery("#Panel3")
+        const q = $("#ColorText");
+        const q1 = $("#Panel3")
         const s = q.getValue();
         q1.setStyle("background-color", s);
     }
